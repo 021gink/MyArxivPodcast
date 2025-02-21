@@ -193,13 +193,13 @@ python main.py --mode batch --language en
 #### Single Article Mode
 ```bash
 # Generate Chinese podcast by topic
-python main.py --mode single --language zh --topic "LLM Agent"
+python main.py --mode single --language zh --topic "LLM Agent" --days_back 1  
 
 # Generate English podcast by article ID
-python main.py --mode single --language en --identifier "2401.xxxxx"
+python main.py --mode single --language en --identifier "2401.xxxxx" --days_back 1
 
 # Generate podcast by article title
-python main.py --mode single --language zh --title "paper title"
+python main.py --mode single --language zh --title "paper title" --days_back 1
 ```
 
 #### Command Line Arguments:

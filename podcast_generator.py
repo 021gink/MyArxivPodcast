@@ -161,7 +161,7 @@ Please regenerate the content:
             journal_ref=article['journal_ref'] or 'N/A',
             content=article['content']
         )
-        
+
         retry_count = 0
         last_error = None
 

@@ -2,6 +2,7 @@ import config
 from news_crawler import get_news, get_single_article
 from podcast_generator import PodcastGenerator
 from text_to_speech import TextToSpeech
+from Chat_tts import TTSEngine
 import logging
 import os
 from datetime import datetime
@@ -35,17 +36,19 @@ def save_article_references(articles, output_dir):
     return ref_file
 
 def parse_arguments():
-    parser = argparse.ArgumentParser(description='生成AI学术播客')
-    parser.add_argument('--mode', type=Literal['batch', 'single'], default='batch',
-                       help='生成模式：batch(批量文章) 或 single(单篇文章)')
-    parser.add_argument('--language', type=Literal['zh', 'en'], default='zh',
-                       help='播客语言：zh(中文) 或 en(英文)')
-    parser.add_argument('--topic', type=str, default='LLM Agent',
-                       help='文章主题，用于单篇模式')
-    parser.add_argument('--identifier', type=str,
-                       help='文章ID，用于单篇模式 (可选)')
-    parser.add_argument('--title', type=str,
-                       help='文章标题，用于单篇模式 (可选)')
+    parser = argparse.ArgumentParser(description='生成学术论文播客')
+    parser.add_argument('--mode', 
+                      choices=['batch', 'single'],
+                      default='batch',
+                      help='生成模式：batch(批量文章) 或 single(单篇文章)')
+    parser.add_argument('--language',
+                      choices=['zh', 'en'],
+                      default='zh',
+                      help='输出语言：zh(中文) 或 en(英文)')
+    parser.add_argument('--topic', type=str, help='文章主题（单篇模式）')
+    parser.add_argument('--identifier', type=str, help='文章ID（单篇模式）')
+    parser.add_argument('--title', type=str, help='文章标题（单篇模式）')
+    parser.add_argument('--days_back', type=int, default=7, help='爬取最近N天的文章')
     return parser.parse_args()
 
 def main():
@@ -92,6 +95,8 @@ def main():
             title=args.title,
             topic=args.topic
         )
+        logging.info("成功获取文章数据：")
+        logging.info(json.dumps(article, indent=4, ensure_ascii=False))
         podcast_script = podcast_gen.generate_single_article(article)
 
     # 2. Generate podcast content
@@ -106,17 +111,31 @@ def main():
 
     # 3. Convert to speech
     logging.info("Starting text-to-speech conversion")
-    tts = TextToSpeech(config.BAIDU_API_KEY, config.BAIDU_SECRET_KEY)
     
-    # Generate audio files
-    audio_parts = tts.convert_dialog(podcast_script, output_dir)
-    logging.info(f"Generated {len(audio_parts)} audio segments")
+    try:
+        # 根据配置选择 TTS 方式
 
-    # Merge audio files
-    output_filename = "podcast.mp3"
-    output_path = os.path.join(output_dir, output_filename)
-    final_audio = tts.merge_audio_files(audio_parts, output_path)
-    logging.info(f"Audio files merged, final file: {final_audio}")
+        tts = TextToSpeech(config.BAIDU_API_KEY, config.BAIDU_SECRET_KEY) if config.BAIDU_API_KEY else TTSEngine(config.HOST_VOICE_PATH,config.GUEST_VOICE_PATH)
+        logging.info(f"Using {'Baidu' if config.BAIDU_API_KEY else 'ChatTTS'} TTS service")
+        
+        # Generate audio files
+        audio_parts = tts.convert_dialog(podcast_script, output_dir)
+        logging.info(f"Generated {len(audio_parts)} audio segments")
+
+        # Merge audio files
+        output_filename = "podcast.mp3"
+        output_path = os.path.join(output_dir, output_filename)
+        final_audio = tts.merge_audio_files(audio_parts, output_path)
+        logging.info(f"Audio files merged, final file: {final_audio}")
+
+    except Exception as e:
+        logging.error(f"程序运行出错: {str(e)}")
+        raise
+    finally:
+        # 正确的资源清理位置
+        if 'tts' in locals() and hasattr(tts, 'cleanup'):
+            tts.cleanup()
+            logging.info("已清理TTS引擎资源")
 
     print(f"Podcast generated and saved in directory: {output_dir}")
     logging.info(f"Main program completed, log file: {log_file}")

@@ -2,37 +2,37 @@ talk_generate_prompt_zh = """你是一个专业的科技播客编导。请基于
 
 输出要求：
 请以JSON格式输出，结构如下：
-{
-    "podcast": {
-        "opening": [
-            {"role": "host", "content": "开场白内容"},
-            {"role": "guest", "content": "回应内容"}
-        ],
-        "main_content": [
-            {
-                "article_index": 1,
-                "discussion": [
-                    {"role": "host", "content": "话题引入"},
-                    {"role": "guest", "content": "回应内容"},
-                    ...
-                ]
-            },
-            {
-                "article_index": 2,
-                "discussion": [
-                    {"role": "host", "content": "话题引入"},
-                    {"role": "guest", "content": "回应内容"},
-                    ...
-                ]
-            }
-        ],
-        "closing": [
-            {"role": "host", "content": "总结内容"},
-            {"role": "guest", "content": "补充内容"},
-            {"role": "host", "content": "下期预告"}
-        ]
-    }
-}
+{{ 
+    "podcast": {{ 
+        "opening": [ 
+            {{ "role": "host", "content": "开场白内容" }}, 
+            {{ "role": "guest", "content": "回应内容" }} 
+        ], 
+        "main_content": [ 
+            {{ 
+                "article_index": 1, 
+                "discussion": [ 
+                    {{ "role": "host", "content": "话题引入" }}, 
+                    {{ "role": "guest", "content": "回应内容" }}, 
+                    ... 
+                ] 
+            }}, 
+            {{ 
+                "article_index": 2, 
+                "discussion": [ 
+                    {{ "role": "host", "content": "话题引入" }}, 
+                    {{ "role": "guest", "content": "回应内容" }}, 
+                    ... 
+                ] 
+            }} 
+        ], 
+        "closing": [ 
+            {{ "role": "host", "content": "总结内容" }}, 
+            {{ "role": "guest", "content": "补充内容" }}, 
+            {{ "role": "host", "content": "下期预告" }} 
+        ] 
+    }} 
+}}
 
 内容要求：
 1. 对话风格：
@@ -65,37 +65,37 @@ talk_generate_prompt_en = """You are a professional tech podcast producer. Pleas
 
 Output requirements:
 Please output in JSON format with the following structure:
-{
-    "podcast": {
+{{
+    "podcast": {{
         "opening": [
-            {"role": "host", "content": "opening content"},
-            {"role": "guest", "content": "response content"}
+            {{"role": "host", "content": "opening content"}},
+            {{"role": "guest", "content": "response content"}}
         ],
         "main_content": [
-            {
+            {{
                 "article_index": 1,
                 "discussion": [
-                    {"role": "host", "content": "topic introduction"},
-                    {"role": "guest", "content": "response content"},
+                    {{"role": "host", "content": "topic introduction"}},
+                    {{"role": "guest", "content": "response content"}},
                     ...
                 ]
-            },
-            {
+            }},
+            {{
                 "article_index": 2,
                 "discussion": [
-                    {"role": "host", "content": "topic introduction"},
-                    {"role": "guest", "content": "response content"},
+                    {{"role": "host", "content": "topic introduction"}},
+                    {{"role": "guest", "content": "response content"}},
                     ...
                 ]
-            }
+            }}
         ],
         "closing": [
-            {"role": "host", "content": "summary content"},
-            {"role": "guest", "content": "additional insights"},
-            {"role": "host", "content": "next episode preview"}
+            {{"role": "host", "content": "summary content"}},
+            {{"role": "guest", "content": "additional insights"}},
+            {{"role": "host", "content": "next episode preview"}}
         ]
-    }
-}
+    }}
+}}
     
 Content requirements:
 1. Dialogue style:
@@ -142,49 +142,50 @@ DOI：{doi}
 
 输出要求：
 请以JSON格式输出，结构如下：
-{
-    "podcast": {
+
+{{
+    "podcast": {{
         "opening": [
-            {"role": "host", "content": "开场白，介绍论文背景"},
-            {"role": "guest", "content": "专业角度的初步评价"}
+            {{"role": "host", "content": "开场白，介绍论文背景"}},
+            {{"role": "guest", "content": "专业角度的初步评价"}}
         ],
         "main_content": [
-            {
+            {{
                 "section": "研究背景与动机",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            },
-            {
+            }},
+            {{
                 "section": "技术创新与方法",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            },
-            {
+            }},
+            {{
                 "section": "实验结果分析",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            },
-            {
+            }},
+            {{
                 "section": "行业影响与展望",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            }
+            }}
         ],
         "closing": [
-            {"role": "host", "content": "总结研究价值"},
-            {"role": "guest", "content": "补充见解"},
-            {"role": "host", "content": "结束语"}
+            {{"role": "host", "content": "总结研究价值"}},
+            {{"role": "guest", "content": "补充见解"}},
+            {{"role": "host", "content": "结束语"}}
         ]
-    }
-}
+    }}
+}}
 
 讨论要求：
 1. 深度要求：
@@ -225,49 +226,49 @@ Paper Content:
 
 Output Requirements:
 Please output in JSON format with the following structure:
-{
-    "podcast": {
+{{
+    "podcast": {{
         "opening": [
-            {"role": "host", "content": "opening remarks, paper background"},
-            {"role": "guest", "content": "initial professional assessment"}
+            {{"role": "host", "content": "opening remarks, paper background"}},
+            {{"role": "guest", "content": "initial professional assessment"}}
         ],
         "main_content": [
-            {
+            {{
                 "section": "Research Background & Motivation",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            },
-            {
+            }},
+            {{
                 "section": "Technical Innovation & Methodology",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            },
-            {
+            }},
+            {{
                 "section": "Experimental Results Analysis",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            },
-            {
+            }},
+            {{
                 "section": "Industry Impact & Future Prospects",
                 "discussion": [
-                    {"role": "host", "content": "..."},
-                    {"role": "guest", "content": "..."}
+                    {{"role": "host", "content": "..."}},
+                    {{"role": "guest", "content": "..."}}
                 ]
-            }
+            }}
         ],
         "closing": [
-            {"role": "host", "content": "summary of research value"},
-            {"role": "guest", "content": "additional insights"},
-            {"role": "host", "content": "closing remarks"}
+            {{"role": "host", "content": "summary of research value"}},
+            {{"role": "guest", "content": "additional insights"}},
+            {{"role": "host", "content": "closing remarks"}}
         ]
-    }
-}
+    }}
+}}
 
 Discussion Requirements:
 1. Depth Requirements:

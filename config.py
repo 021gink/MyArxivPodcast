@@ -9,12 +9,12 @@ DAYS_BACK = 5
 
 # LLM API settings
 LLM_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-LLM_API_TOKEN = "your-api-key"
-LLM_MODLE = "glm-4-plus"
+LLM_API_TOKEN = "7a39e8571f075d2c89b6623428bbf4f5.kAKySF36UEemApEz"
+LLM_MODLE = "glm-4-flash"
 
 # Baidu Text-to-Speech API settings
-BAIDU_API_KEY = "your-baidu-api-key"
-BAIDU_SECRET_KEY = "your-baidu-secret-key"
+BAIDU_API_KEY = ""  # 如果为空则使用本地 ChatTS
+BAIDU_SECRET_KEY = ""
 
 # Output path settings
 OUTPUT_DIR = "output"
@@ -82,3 +82,11 @@ TTS_CONFIG = {
 # Temporary file settings
 TEMP_AUDIO_DIR = "temp_audio"  # Temporary audio files directory
 CLEAN_TEMP_FILES = True        # Whether to clean temporary files
+
+# ChatTTS 音色配置
+HOST_VOICE_PATH = 'speakervoice/host_voice.pth'  
+GUEST_VOICE_PATH = 'speakervoice/guest_voice.pth'  
+
+
+
+
