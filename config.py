@@ -9,8 +9,8 @@ DAYS_BACK = 5
 
 # LLM API settings
 LLM_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-LLM_API_TOKEN = "7a39e8571f075d2c89b6623428bbf4f5.kAKySF36UEemApEz"
-LLM_MODLE = "glm-4-flash"
+LLM_API_TOKEN = " "
+LLM_MODLE = "glm-4"
 
 # Baidu Text-to-Speech API settings
 BAIDU_API_KEY = ""  # 如果为空则使用本地 ChatTS
