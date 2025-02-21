@@ -14,7 +14,7 @@
 - 🔍 自动爬取 arXiv 网站的最新学术论文
 - 🧠 使用大语言模型生成结构化的播客对话脚本
 - 🎯 支持自定义关键词和时间范围的新闻筛选
-- 🗣️ 通过百度文本转语音 API 生成自然的播客音频
+- 🗣️ 通过百度文本转语音 API或ChatTTS 生成自然的播客音频
 - 📝 完整的日志记录和文章引用追踪
 - 🎨 支持多种音色和语音参数调节
 
@@ -100,6 +100,7 @@ python main.py --mode single --language zh --title "论文标题"
 ├── news_crawler.py      # 🕷️ 新闻爬虫模块
 ├── podcast_generator.py # 🎙️ 播客内容生成模块
 ├── text_to_speech.py   # 🗣️ 语音合成模块
+├── Chat_tts.py         # 🗣️ 语音合成模块
 ├── prompt.py           # 💭 LLM 提示词模板
 └── README.md           # 📖 项目说明文档
 ```
@@ -148,7 +149,7 @@ python main.py --mode single --language zh --title "论文标题"
 - 🔍 Automatically crawl academic papers from sources like arXiv
 - 🧠 Generate structured podcast scripts using LLM
 - 🎯 Customizable keywords and time range for news filtering
-- 🗣️ Natural podcast audio generation via Baidu TTS API
+- 🗣️ Natural podcast audio generation via Baidu TTS API or ChtTTS
 - 📝 Complete logging and article reference tracking
 - 🎨 Multiple voice options and audio parameter adjustments
 
@@ -239,6 +240,7 @@ Customize in `config.py`:
 ├── news_crawler.py      # 🕷️ News crawler
 ├── podcast_generator.py # 🎙️ Content generator
 ├── text_to_speech.py   # 🗣️ TTS module
+├── Chat_tts.py         # 🗣️ ChatTTS module
 ├── prompt.py           # 💭 LLM prompts
 └── README.md           # 📖 Documentation
 ```
